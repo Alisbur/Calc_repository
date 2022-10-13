@@ -1,17 +1,21 @@
 import os
 def clear(): return os.system('cls')
+import datetime
+
 
 # SOURCE_PATH = ""
 
-# def log_out():
-#     with open(SOURCE_PATH, 'w') as source: 
-#         for line in f:
-#             try:
-#                 result *= mylist[int(line.strip())-1]
-#             except ValueError:
-#                 print("В файле содержится неправильное значение")
-#                 return -1
-#     return 0
+def log_in(operation, op1, op2, result):
+    b = datetime.datetime.now()
+    with open(SOURCE_PATH, 'a', encoding="UTF-8") as source: 
+        source.write(f"{b.strftime("%Y-%m-%d-%H.%M.%S")} - {operation} - {op1} - {op2} - {result}")
+    return 0
+
+def log_out():
+    with open(SOURCE_PATH, "r", encoding="UTF-8") as source: 
+        for line in source:
+            print(line, end="")
+    return 0
 
 def num_input():
     while True:
@@ -82,3 +86,4 @@ def menu():
 
 while True:    
     menu()
+    clear()
